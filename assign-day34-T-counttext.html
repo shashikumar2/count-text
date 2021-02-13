@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Hello</title>
+    </head>
+    <body>
+        <div id = 'root'>
+        </div>
+           
+            <script src="C:\Users\SHASHI NIRANJAN\jan-2020-mern\react\js\react.development.js"></script>
+            <script src="C:\Users\SHASHI NIRANJAN\jan-2020-mern\react\js\react-dom.development.js"></script>
+            <script src="C:\Users\SHASHI NIRANJAN\jan-2020-mern\react\js\babel.js"></script>
+
+            <script type="text/babel">
+                    
+            const rootHandle = document.getElementById('root')
+
+            class Generate extends React.Component{
+                constructor(){
+                    super()
+                    this.state = {
+                        content :'',
+                        words : 0,
+                        chars : 0                        
+                    }
+                }
+                    handleContentChange = (e)=>{
+                        const content = e.target.value
+                        this.setState({
+                            content,
+                            chars:this.state.content.length + 1,
+                            words:this.state.content.split(' ').length
+                })           
+            }
+       
+                render() {
+                return (
+                   <div>
+                    <h2>Word Count </h2>
+                    <textarea 
+                                   id='content'
+                                   value={this.state.content}
+                                   onChange={this.handleContentChange}                                   
+                                   />
+                   <h4>You have  entered  {this.state.words} words {this.state.chars} characters </h4>                      
+                   </div>
+                )
+            }
+        }
+            ReactDOM.render(<Generate/>, rootHandle)            
+          </script>
+    </body>
+</html>
